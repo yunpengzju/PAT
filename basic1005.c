@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int isKey(int a, int b);
 void sortKey(int a[], int length);
 void display(int a[], int length);
+void error(char *a);
 
 int main(){
 	int i,j,n,flag;
@@ -35,6 +37,7 @@ int main(){
 }
 
 int isKey(int a, int b){
+	if (a < 1) error("function isKey:invalid input");
 	if (b == 1)  return -1;
 	if (a == b)  return -1;
 	while(a != 1){
@@ -70,4 +73,10 @@ void display(int a[],int length)
 		if (i != length-1) printf("%d ",a[i]);
 		else printf("%d",a[i]);
 	}
+}
+
+void error(char *a)
+{
+	printf("%s\n",a);
+	exit(0);
 }
